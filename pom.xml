@@ -72,6 +72,17 @@
     </dependencies>
     <build>
         <plugins>
+           
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
@@ -83,8 +94,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-        
+            </plugin>     
             <plugin>
                 <groupId>com.github.johnpoth</groupId>
                 <artifactId>jshell-maven-plugin</artifactId>
@@ -92,26 +102,4 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>JDK13</id>
-            <activation>
-                <jdk>13</jdk>
-            </activation>
-            <properties>
-                <maven.compiler.source>13</maven.compiler.source>
-                <maven.compiler.target>13</maven.compiler.target>
-            </properties>
-        </profile>
-        <profile>
-            <id>JDK14-or-later</id>
-            <activation>
-                <jdk>[14,)</jdk>
-            </activation>
-            <properties>
-                <maven.compiler.source>14</maven.compiler.source>
-                <maven.compiler.target>14</maven.compiler.target>
-            </properties>
-        </profile>
-    </profiles>
 </project>
